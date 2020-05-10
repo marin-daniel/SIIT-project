@@ -8,6 +8,480 @@
   ],
   "products": [
     {
+      "sku": "2510408",
+      "displayName": "MICROCHIP - MIC5891YN - Peripheral Driver, LED, 8 Outputs, 4.5 V to 15 V supply, 50 V/500 mA out, DIP-16",
+      "productStatus": "STOCKED",
+      "rohsStatusCode": "YES_YES",
+      "packSize": 1,
+      "unitOfMeasure": "BUCATĂ",
+      "id": "pf_RO1_2510408_0",
+      "image": {
+        "baseName": "/1556762-40.jpg",
+        "vrntPath": "farnell/"
+      },
+      "prices": [
+        {
+          "to": 9,
+          "from": 1,
+          "cost": 9.58
+        },
+        {
+          "to": 24,
+          "from": 10,
+          "cost": 8.8
+        },
+        {
+          "to": 99,
+          "from": 25,
+          "cost": 7.97
+        },
+        {
+          "to": 999999999,
+          "from": 100,
+          "cost": 7.24
+        }
+      ],
+      "inv": 179,
+      "vendorId": "100144",
+      "vendorName": "MICROCHIP",
+      "brandName": "MICROCHIP",
+      "translatedManufacturerPartNumber": "MIC5891YN",
+      "translatedMinimumOrderQuality": 1,
+      "attributes": [
+        {
+          "attributeLabel": "Output Current",
+          "attributeUnit": "mA",
+          "attributeValue": "500"
+        },
+        {
+          "attributeLabel": "No. of Outputs",
+          "attributeUnit": "Outputs",
+          "attributeValue": "8"
+        },
+        {
+          "attributeLabel": "Driver Case Style",
+          "attributeValue": "DIP"
+        },
+        {
+          "attributeLabel": "Output Voltage",
+          "attributeUnit": "V",
+          "attributeValue": "50"
+        },
+        {
+          "attributeLabel": "Product Range",
+          "attributeValue": "-"
+        },
+        {
+          "attributeLabel": "Supply Voltage Min",
+          "attributeUnit": "V",
+          "attributeValue": "4.5"
+        },
+        {
+          "attributeLabel": "Supply Voltage Max",
+          "attributeUnit": "V",
+          "attributeValue": "15"
+        }
+      ],
+      "related": {
+        "containAlternatives": false,
+        "containcontainRoHSAlternatives": false,
+        "containAccessories": false,
+        "containcontainRoHSAccessories": false
+      },
+      "stock": {
+        "level": 179,
+        "leastLeadTime": 64,
+        "status": 1,
+        "shipsFromMultipleWarehouses": false,
+        "breakdown": [
+          {
+            "inv": 504,
+            "region": "UK",
+            "lead": 64,
+            "warehouse": "GB1"
+          },
+          {
+            "inv": 0,
+            "region": "UK",
+            "lead": 64,
+            "warehouse": "UK1"
+          },
+          {
+            "inv": 0,
+            "region": "Liege",
+            "lead": 64,
+            "warehouse": "LG1"
+          },
+          {
+            "inv": 0,
+            "region": "-",
+            "lead": 64,
+            "warehouse": "PE1"
+          }
+        ],
+        "regionalBreakdown": [
+          {
+            "level": 0,
+            "leastLeadTime": 64,
+            "status": 1,
+            "warehouse": "Liege",
+            "shipsFromMultipleWarehouses": false
+          },
+          {
+            "level": 504,
+            "leastLeadTime": 64,
+            "status": 1,
+            "warehouse": "UK",
+            "shipsFromMultipleWarehouses": true
+          },
+          {
+            "level": 0,
+            "leastLeadTime": 64,
+            "status": 1,
+            "warehouse": "-",
+            "shipsFromMultipleWarehouses": false
+          }
+        ]
+      },
+      "countryOfOrigin": "TH",
+      "comingSoon": false,
+      "inventoryCode": 5,
+      "nationalClassCode": null,
+      "publishingModule": null,
+      "vatHandlingCode": "SLST",
+      "releaseStatusCode": 4,
+      "isSpecialOrder": false,
+      "isAwaitingRelease": false,
+      "reeling": false,
+      "discountReason": 30,
+      "brandId": "100144",
+      "commodityClassCode": "043017007"
+    },
+    {
+      "sku": "2510409",
+      "displayName": "MICROCHIP - MIC5891YWM - Peripheral Driver, Power, 8 Outputs, 5 V to 12 V supply, 50 V/500 mA out, SOIC-16",
+      "productStatus": "STOCKED",
+      "rohsStatusCode": "YES_YES",
+      "packSize": 1,
+      "unitOfMeasure": "BUCATĂ",
+      "id": "pf_RO1_2510409_0",
+      "image": {
+        "baseName": "/3833498.jpg",
+        "vrntPath": "farnell/"
+      },
+      "datasheets": [
+        {
+          "type": "T",
+          "description": "Technical Data Sheet (522.85KB) EN",
+          "url": "http://www.farnell.com/datasheets/2245203.pdf"
+        }
+      ],
+      "prices": [
+        {
+          "to": 9,
+          "from": 1,
+          "cost": 12.76
+        },
+        {
+          "to": 24,
+          "from": 10,
+          "cost": 11.69
+        },
+        {
+          "to": 99,
+          "from": 25,
+          "cost": 10.61
+        },
+        {
+          "to": 999999999,
+          "from": 100,
+          "cost": 9.68
+        }
+      ],
+      "inv": 41,
+      "vendorId": "100144",
+      "vendorName": "MICROCHIP",
+      "brandName": "MICROCHIP",
+      "translatedManufacturerPartNumber": "MIC5891YWM",
+      "translatedMinimumOrderQuality": 1,
+      "attributes": [
+        {
+          "attributeLabel": "Output Current",
+          "attributeUnit": "mA",
+          "attributeValue": "500"
+        },
+        {
+          "attributeLabel": "No. of Outputs",
+          "attributeUnit": "Outputs",
+          "attributeValue": "8"
+        },
+        {
+          "attributeLabel": "Driver Case Style",
+          "attributeValue": "SOIC"
+        },
+        {
+          "attributeLabel": "Output Voltage",
+          "attributeUnit": "V",
+          "attributeValue": "50"
+        },
+        {
+          "attributeLabel": "Product Range",
+          "attributeValue": "-"
+        },
+        {
+          "attributeLabel": "Supply Voltage Min",
+          "attributeUnit": "V",
+          "attributeValue": "5"
+        },
+        {
+          "attributeLabel": "Supply Voltage Max",
+          "attributeUnit": "V",
+          "attributeValue": "12"
+        }
+      ],
+      "related": {
+        "containAlternatives": false,
+        "containcontainRoHSAlternatives": false,
+        "containAccessories": false,
+        "containcontainRoHSAccessories": false
+      },
+      "stock": {
+        "level": 41,
+        "leastLeadTime": 64,
+        "status": 1,
+        "shipsFromMultipleWarehouses": true,
+        "breakdown": [
+          {
+            "inv": 41,
+            "region": "Liege",
+            "lead": 64,
+            "warehouse": "LG1"
+          },
+          {
+            "inv": 846,
+            "region": "UK",
+            "lead": 64,
+            "warehouse": "UK1"
+          },
+          {
+            "inv": 0,
+            "region": "UK",
+            "lead": 64,
+            "warehouse": "GB1"
+          },
+          {
+            "inv": 0,
+            "region": "-",
+            "lead": 64,
+            "warehouse": "PE1"
+          }
+        ],
+        "regionalBreakdown": [
+          {
+            "level": 41,
+            "leastLeadTime": 64,
+            "status": 1,
+            "warehouse": "Liege",
+            "shipsFromMultipleWarehouses": false
+          },
+          {
+            "level": 846,
+            "leastLeadTime": 64,
+            "status": 1,
+            "warehouse": "UK",
+            "shipsFromMultipleWarehouses": true
+          },
+          {
+            "level": 0,
+            "leastLeadTime": 64,
+            "status": 1,
+            "warehouse": "-",
+            "shipsFromMultipleWarehouses": false
+          }
+        ]
+      },
+      "countryOfOrigin": "ID",
+      "comingSoon": false,
+      "inventoryCode": 5,
+      "nationalClassCode": null,
+      "publishingModule": null,
+      "vatHandlingCode": "SLST",
+      "releaseStatusCode": 4,
+      "isSpecialOrder": false,
+      "isAwaitingRelease": false,
+      "reeling": false,
+      "discountReason": 30,
+      "brandId": "100144",
+      "commodityClassCode": "043017007"
+    },
+    {
+      "sku": "2851576",
+      "displayName": "MICROCHIP - MIC5891YWM-TR - Peripheral Driver, 8 Outputs, 5V to 12V Supply, 50V/500mA Out, WSOIC-16",
+      "productStatus": "STOCKED",
+      "rohsStatusCode": "YES_YES",
+      "packSize": 1,
+      "unitOfMeasure": "BUCATĂ (PE BOBINĂ TĂIATĂ)",
+      "id": "pf_RO1_2851576_0",
+      "image": {
+        "baseName": "/GE16SOIC-40.jpg",
+        "vrntPath": "farnell/"
+      },
+      "datasheets": [
+        {
+          "type": "T",
+          "description": "Technical Data Sheet (522.85KB) EN",
+          "url": "http://www.farnell.com/datasheets/2245203.pdf"
+        }
+      ],
+      "prices": [
+        {
+          "to": 9,
+          "from": 1,
+          "cost": 12.76
+        },
+        {
+          "to": 24,
+          "from": 10,
+          "cost": 11.69
+        },
+        {
+          "to": 49,
+          "from": 25,
+          "cost": 10.61
+        },
+        {
+          "to": 99,
+          "from": 50,
+          "cost": 10.17
+        },
+        {
+          "to": 249,
+          "from": 100,
+          "cost": 9.68
+        },
+        {
+          "to": 999999999,
+          "from": 250,
+          "cost": 9.49
+        }
+      ],
+      "inv": 32,
+      "vendorId": "100144",
+      "vendorName": "MICROCHIP",
+      "brandName": "MICROCHIP",
+      "translatedManufacturerPartNumber": "MIC5891YWM-TR",
+      "translatedMinimumOrderQuality": 1,
+      "attributes": [
+        {
+          "attributeLabel": "Output Current",
+          "attributeUnit": "mA",
+          "attributeValue": "500"
+        },
+        {
+          "attributeLabel": "No. of Outputs",
+          "attributeUnit": "Outputs",
+          "attributeValue": "8"
+        },
+        {
+          "attributeLabel": "Driver Case Style",
+          "attributeValue": "WSOIC"
+        },
+        {
+          "attributeLabel": "Output Voltage",
+          "attributeUnit": "V",
+          "attributeValue": "50"
+        },
+        {
+          "attributeLabel": "Product Range",
+          "attributeValue": "-"
+        },
+        {
+          "attributeLabel": "Supply Voltage Min",
+          "attributeUnit": "V",
+          "attributeValue": "5"
+        },
+        {
+          "attributeLabel": "Supply Voltage Max",
+          "attributeUnit": "V",
+          "attributeValue": "12"
+        }
+      ],
+      "related": {
+        "containAlternatives": false,
+        "containcontainRoHSAlternatives": false,
+        "containAccessories": false,
+        "containcontainRoHSAccessories": false
+      },
+      "stock": {
+        "level": 32,
+        "leastLeadTime": 64,
+        "status": 1,
+        "shipsFromMultipleWarehouses": true,
+        "breakdown": [
+          {
+            "inv": 32,
+            "region": "UK",
+            "lead": 64,
+            "warehouse": "GB1"
+          },
+          {
+            "inv": 1000,
+            "region": "UK",
+            "lead": 64,
+            "warehouse": "UK1"
+          },
+          {
+            "inv": 0,
+            "region": "Liege",
+            "lead": 64,
+            "warehouse": "LG1"
+          },
+          {
+            "inv": 0,
+            "region": "-",
+            "lead": 64,
+            "warehouse": "PE1"
+          }
+        ],
+        "regionalBreakdown": [
+          {
+            "level": 0,
+            "leastLeadTime": 64,
+            "status": 1,
+            "warehouse": "Liege",
+            "shipsFromMultipleWarehouses": false
+          },
+          {
+            "level": 1032,
+            "leastLeadTime": 64,
+            "status": 1,
+            "warehouse": "UK",
+            "shipsFromMultipleWarehouses": true
+          },
+          {
+            "level": 0,
+            "leastLeadTime": 64,
+            "status": 1,
+            "warehouse": "-",
+            "shipsFromMultipleWarehouses": false
+          }
+        ]
+      },
+      "countryOfOrigin": "TH",
+      "comingSoon": false,
+      "inventoryCode": 5,
+      "nationalClassCode": null,
+      "publishingModule": null,
+      "vatHandlingCode": "SLST",
+      "releaseStatusCode": 4,
+      "isSpecialOrder": false,
+      "isAwaitingRelease": false,
+      "reeling": false,
+      "discountReason": 30,
+      "brandId": "100144",
+      "commodityClassCode": "043017007"
+    },
+    {
       "sku": "2851576RL",
       "displayName": "MICROCHIP - MIC5891YWM-TR - Peripheral Driver, 8 Outputs, 5V to 12V Supply, 50V/500mA Out, WSOIC-16",
       "productStatus": "STOCKED",
@@ -11814,8 +12288,8 @@
       "unitOfMeasure": "BUCATĂ",
       "id": "pf_RO1_4525024_0",
       "image": {
-        "baseName": "/GE2TO3-40.jpg",
-        "vrntPath": "farnell/"
+        "baseName": "/4612753.jpg",
+        "vrntPath": "nio/"
       },
       "datasheets": [
         {

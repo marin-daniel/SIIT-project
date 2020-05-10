@@ -12,7 +12,8 @@ import SearchForm from './electronicAPI/SearchForm';
 import ProductDetails from './electronicAPI/ProductDetails';
 import Products from './electronicAPI/Products'
 import BomList from './electronicAPI/BomList'
-import TestPage from './electronicAPI/MainPage';
+import HomePage from './projects/HomePage';
+import Projects from './projects/Projects'
 import EditPart from './electronicAPI/EditPart';
 import AddNewPartData from './electronicAPI/AddNewPartData'
 import Weather from './weather/Weather'
@@ -61,7 +62,10 @@ function App() {
 
         <section className='mainSection'>
           <Route exact path='/'>
-            <TestPage />
+            <HomePage />
+          </Route>
+          <Route exact path='/projects'>
+            <Projects />
           </Route>
           <Route exact path='/products'>
             <Products setPartsData={setPartsData} setID={setId} />

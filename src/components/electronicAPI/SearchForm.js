@@ -5,7 +5,7 @@ function SearchForm(){
 
     const [searchInput, setSearchInput] = useState(''); 
     const history = useHistory();
-    let timeout = null;
+    let [timeout, updateTimeout] = useState(null);
 
     function handleInputChange(e) {
         if(timeout){
@@ -14,14 +14,15 @@ function SearchForm(){
 
         const searchString = e.currentTarget.value.toUpperCase();
         setSearchInput(searchString)
-        timeout = setTimeout(() => history.push('/products?q=' + searchString), 400)
+        updateTimeout(setTimeout(() => history.push('/products?q=' + searchString), 400))
     }
 
     return (
         <section className='searchSection'>
-            <form className='search-form'>
+            <form className='search-form' autocomplete='off'>
                 <div className='flex-container'>
-                    <input className='search-input'
+                    <input
+                        className='search-input'
                         onChange={handleInputChange}
                         value={searchInput}
                         type="text"

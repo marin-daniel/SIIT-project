@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TestPage(){
+function HomePage(){
     return(
         <section >            
             <div className='main-page'>
@@ -47,4 +47,4 @@ function TestPage(){
     )
 }
 
-export default TestPage;
+export default HomePage;

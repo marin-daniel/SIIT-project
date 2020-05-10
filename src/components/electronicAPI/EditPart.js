@@ -4,20 +4,19 @@ import AuthContext from '../auth/AuthContext';
 import Axios from 'axios';
 import { Redirect } from 'react-router';
 
+import ConfigUrl from './ConfigUrl';
+
 function EditPart() {
     
     const { partId } = useParams();
     const [redirect, setRedirect] = useState(false);
     const { username } = useContext(AuthContext);
     const [part, setPart] = useState(null);
-    const [attributeInputs, setAttributeInputs] = useState([{
-        'attributeLabel': '',
-        'attributeUnit': '',
-        'attributeValue': '' 
-    }]);
+
+    const url = ConfigUrl();
 
     async function getPartByID(id) {
-        const res = await Axios('http://localhost:5000/products/' + id);
+        const res = await Axios(url + id);
         const response = res.data;
         setPart(response);
     }
@@ -29,7 +28,7 @@ function EditPart() {
     async function handleSave(e) {
         e.preventDefault();
 
-        const res = Axios('http://localhost:5000/products/' + partId, {
+        const res = await Axios(url + partId, {
             method: 'PUT',
             headers: {
                 'user': username
@@ -47,16 +46,16 @@ function EditPart() {
     }
 
     function handleAttributeInputChange(e){
-        const newAttributes = [...attributeInputs];
-        newAttributes[e.currentTarget.getAttribute('data-index')][e.currentTarget.name] = e.currentTarget.value;
-        setAttributeInputs(newAttributes);
-        console.log(e.currentTarget)
+        const newPart = {...part};
+        newPart.attributes[e.currentTarget.getAttribute('data-index')][e.currentTarget.name] = e.currentTarget.value;
+        setPart(newPart);
     }
  
     if (part) {
         if(username){
         return (
             <section >
+                <div className='form'>
                 <h1>Edit Part</h1>
                 <form onSubmit={handleSave}>
                      <div>
@@ -64,6 +63,7 @@ function EditPart() {
                     </div>
                     <div>
                         <input
+                            className='inputs'
                             onChange={ handleInputChange }
                             value={part.displayName}
                             type="text"
@@ -71,7 +71,7 @@ function EditPart() {
                             placeholder="Enter displayName"
                         />
                     </div>
-                    <div className='flex-container'>
+                    <div>
                         <img src={(part.image ?
                             (part.image.vrntPath === 'nio/' ? 'https://ro.farnell.com/productimages/standard/en_US/' + part.image.baseName :
                                 'https://ro.farnell.com/productimages/standard/en_GB/' + part.image.baseName) :
@@ -81,6 +81,7 @@ function EditPart() {
                             <div>
                                 <label htmlFor="vendorName">Manufacturer: </label>
                                 <input
+                                    className='inputs'
                                     onChange={ handleInputChange }
                                     name='vendorName'
                                     value={part.vendorName}
@@ -92,6 +93,7 @@ function EditPart() {
                             <div>
                                 <label htmlFor="translatedManufacturerPartNumber">Manufacturer P/N: </label>
                                 <input
+                                    className='inputs'
                                     onChange={ handleInputChange }
                                     name='translatedManufacturerPartNumber'
                                     value={part.translatedManufacturerPartNumber}
@@ -116,6 +118,7 @@ function EditPart() {
                                         </div>
                                         <div>
                                             <input
+                                                className='inputs'
                                                 onChange={handleAttributeInputChange}
                                                 name='attributeLabel'
                                                 value={attribute.attributeLabel}
@@ -132,6 +135,7 @@ function EditPart() {
                                         </div>
                                         <div>
                                             <input
+                                                className='inputs'
                                                 onChange={handleAttributeInputChange}
                                                 name='attributeValue'
                                                 value={attribute.attributeValue}
@@ -148,6 +152,7 @@ function EditPart() {
                                         </div>
                                         <div>
                                             <input
+                                                className='inputs'
                                                 onChange={handleAttributeInputChange}
                                                 name='attributeUnit'
                                                 value={attribute.attributeUnit}
@@ -166,6 +171,7 @@ function EditPart() {
                     </div>
                     <button type='submit' onSubmit={handleSave} className='submitButton'>Save</button>
                 </form>
+                </div>
                 {redirect && (<Redirect to={'/products/' + part.id}/>)}
             </section>
         )

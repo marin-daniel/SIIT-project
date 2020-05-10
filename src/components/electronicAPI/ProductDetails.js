@@ -4,6 +4,9 @@ import AuthContext from '../auth/AuthContext';
 import Axios from 'axios';
 import { Redirect } from 'react-router'
 
+import ConfigUrl from './ConfigUrl';
+    
+
 
 function ProductDeatils({ partsList }) {
 
@@ -12,14 +15,15 @@ function ProductDeatils({ partsList }) {
     const [redirect, setRedirect] = useState(false);
     const [part, setPart] = useState(null);
 
+    const url = ConfigUrl();
+
     // const part = partsList.find((part) => partId === part.id);
     // console.log(part)
 
     async function getPartByID(id) {
-        const res = await Axios('http://localhost:5000/products/' + id);
+        const res = await Axios(url + id);
         const response = res.data;
         setPart(response);
-        console.log(response.attributes)
     }
 
     useEffect(() => {

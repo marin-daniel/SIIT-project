@@ -1,28 +1,20 @@
 import React, { useContext, useState } from 'react';
 import AuthContext from '../auth/AuthContext';
 import Axios from 'axios';
-import { Redirect } from 'react-router'
+import { useHistory } from 'react-router-dom';
+
+import ConfigUrl from './ConfigUrl';
 
 function AddNewPartData() {
 
     const { username } = useContext(AuthContext);
+    const url = ConfigUrl();
+    const history = useHistory();
+    let timeout = null;
 
     const [isSuccessfull, setSuccessfull] = useState(false);
     const [globalErrorMessage, setGlobalError] = useState('');
     const [isDirty, setDirty] = useState(false);
-
-    const [attributeInputs, setAttributeInputs] = useState([{
-        'attributeLabel': '',
-        'attributeUnit': '',
-        'attributeValue': ''
-    }]);
-
-    const [prices, setPrices] = useState({
-        'cost': '',
-        'url': '',
-        'baseName': '',
-        'vrntPath': ''
-    });
 
     const [formData, setFormData] = useState({
         'displayName': '',
@@ -38,7 +30,11 @@ function AddNewPartData() {
         'datasheets': [{
             'url': ''
         }],
-        'attributes': []
+        'attributes': [{
+            'attributeLabel': '',
+            'attributeUnit': '',
+            'attributeValue': ''
+        }]
     });
 
 
@@ -49,16 +45,10 @@ function AddNewPartData() {
 
         const isInvalid = validateFormData();
 
-        formData.attributes = attributeInputs;
-        formData.prices[0].cost = prices.cost;
-        formData.datasheets[0].url = prices.url;
-        formData.image.baseName = prices.baseName
-        formData.image.vrntPath = prices.vrntPath
-
         if (!isInvalid) {
             setDirty(false);
 
-            Axios('http://localhost:5000/products/', {
+            Axios(url, {
                 method: 'POST',
                 headers: {
                     'user': username
@@ -66,8 +56,11 @@ function AddNewPartData() {
                 data: formData
             });
             setSuccessfull(true);
-            //setRedirect(true);
-            console.log(formData)
+
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+            timeout = setTimeout(() => history.push('products/'), 2000)
         }
     };
 
@@ -82,7 +75,7 @@ function AddNewPartData() {
             }
         }
         
-        if (!prices.cost || !prices.url || !prices.baseName || !prices.vrntPath){
+        if (!formData.prices[0].cost || !formData.datasheets[0].url || !formData.image.baseName || !formData.image.vrntPath){
                 setGlobalError('Marked fields are mandatory!');
                 isInvalid = true;               
             }
@@ -96,34 +89,45 @@ function AddNewPartData() {
             ...formData,
             [e.currentTarget.id]: e.currentTarget.value
         });
-    }
-
+    };
 
     function handleAddNewAttribute(e) {
         e.preventDefault();
-        const newAttributeInputs = [...attributeInputs];
-        newAttributeInputs.push({
-            'attributeLabel': '',
-            'attributeUnit': '',
-            'attributeValue': ''
-        });
-        setAttributeInputs(newAttributeInputs);
+        const newFormData = {...formData};
+        newFormData.attributes.push({
+                'attributeLabel': '',
+                'attributeUnit': '',
+                'attributeValue': ''
+            });
+        setFormData(newFormData);
+    };   
+
+    function handleAttributeInputChange(e){
+        const newFormData = {...formData};
+        newFormData.attributes[e.currentTarget.getAttribute('data-index')][e.currentTarget.name] = e.currentTarget.value;
+        setFormData(newFormData);
     };
 
-    function handleAttributeInputChange(e) {
-        const newAttributes = [...attributeInputs];
-        newAttributes[e.currentTarget.getAttribute('data-index')][e.currentTarget.name] = e.currentTarget.value;
-        setAttributeInputs(newAttributes);
-
-    }
-
-    function handleChange(e) {
+    function handleImageChange(e) {
         setDirty(true);
-        setPrices({
-            ...prices,
-            [e.currentTarget.id]: e.currentTarget.value
-        });
+        const newFormData = {...formData};
+        newFormData.image[e.currentTarget.name] = e.currentTarget.value;;
+        setFormData(newFormData);
+    };
+
+    function handlePriceChange(e) {
+        setDirty(true);
+        const newFormData = {...formData};
+        newFormData.prices[0][e.currentTarget.name] = e.currentTarget.value;
+        setFormData(newFormData);
     }
+
+    function handleDatasheetChange(e) {
+        setDirty(true);
+        const newFormData = {...formData};
+        newFormData.datasheets[0][e.currentTarget.name] = e.currentTarget.value;
+        setFormData(newFormData);
+    };
 
     return (
         <section>
@@ -187,9 +191,9 @@ function AddNewPartData() {
                     </div>
                     <div>
                         <input className={'inputs' + (globalErrorMessage ? ' is-invalid' : '')}
-                            onChange={handleChange}
+                            onChange={handleImageChange}
                             name='baseName'
-                            value={prices.baseName}
+                            value={formData.image.baseName}
                             type='text'
                             id='baseName'
                             placeholder='Enter image name'
@@ -200,9 +204,9 @@ function AddNewPartData() {
                     </div>
                     <div>
                         <input className={'inputs' + (globalErrorMessage ? ' is-invalid' : '')}
-                            onChange={handleChange}
+                            onChange={handleImageChange}
                             name='vrntPath'
-                            value={prices.vrntPath}
+                            value={formData.image.vrntPath}
                             type='text'
                             id='vrntPath'
                             placeholder='Enter image path'
@@ -213,9 +217,9 @@ function AddNewPartData() {
                     </div>
                     <div>
                         <input className={'inputs' + (globalErrorMessage ? ' is-invalid' : '')}
-                            onChange={handleChange}
-                            name='cost'
-                            value={prices.cost}
+                            onChange={handlePriceChange}
+                            name='cost' 
+                            value={formData.prices.cost}
                             type='text'
                             id='cost'
                             placeholder='Enter price'
@@ -226,9 +230,9 @@ function AddNewPartData() {
                     </div>
                     <div>
                         <input className={'inputs' + (globalErrorMessage ? ' is-invalid' : '')}
-                            onChange={handleChange}
+                            onChange={handleDatasheetChange}
                             name='url'
-                            value={prices.url}
+                            value={formData.datasheets.url}
                             type='text'
                             id='url'
                             placeholder='Enter datasheet url'
@@ -236,7 +240,7 @@ function AddNewPartData() {
                     </div>
                     <h1>Attributes</h1>
                     <div>
-                        {attributeInputs.map((attributeInput, index) => (
+                        {formData.attributes.map((attributeInput, index) => (
                             < div key={index}>
                                 <div>
                                     <label htmlFor={'attributeLabel' + index}>Attribute Label</label>
@@ -283,11 +287,19 @@ function AddNewPartData() {
                             </div>
                         ))}
                     </div>
-                    <button onClick={handleAddNewAttribute} className='submitButton'>New Attribute</button>
-                    <button type='submit' onSubmit={handleSave} className='submitButton' disabled={!isDirty}>Save</button>
+                    <button
+                        onClick={handleAddNewAttribute} 
+                        className='submitButton'>New Attribute
+                    </button>
+                    <button
+                        type='submit'
+                        onSubmit={handleSave}
+                        className={ isDirty ? 'submitButton' : 'submit-button-inactive'}
+                        disabled={!isDirty} >Save
+                    </button>
 
                 </form>
-            </div>
+            </div>            
             : <h1>You are not allowed to perform this action!!! Please login!</h1>
              }
         </section >

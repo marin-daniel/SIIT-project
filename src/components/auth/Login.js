@@ -45,7 +45,7 @@ export default function Login() {
                     setGlobalError('Username does not exist! Please register!');
 
                 } else if (user.password !== formData.password) {
-                    setGlobalError('Password missmatch!');
+                    setGlobalError('Invalid password!');
 
                 } else {
 
@@ -142,7 +142,7 @@ export default function Login() {
                         {formError.password}
                     </div>
                 </div>
-                <button type="submit" className='submitButton' disabled={!isDirty}>Login</button>
+                <button type="submit" className={ isDirty ? 'submitButton' : 'submit-button-inactive'} disabled={!isDirty}>Login</button>
             </form>
         </div>
     )

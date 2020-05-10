@@ -178,7 +178,7 @@ function Register() {
                         {formError['different-passwords']}
                     </div>
                 </div>
-                <button type="submit" className='submitButton' disabled={!isDirty}>Register</button>
+                <button type="submit" className={ isDirty ? 'submitButton' : 'submit-button-inactive'} disabled={!isDirty}>Register</button>
             </form>
         </div>
     )

@@ -1,11 +1,20 @@
 import React, { useEffect, useState} from 'react';
-import jsPDF from 'jspdf'
-import 'jspdf-autotable'
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 function BomList({ partsList, partID, deletePart, clearList }) {
 
     const [items, setItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState([]);
+    const [isDirty, setDirty] = useState(false);
+
+    useEffect(() => {
+        if(items.length){
+            setDirty(true);
+        } else{
+            setDirty(false);  
+        }        
+    }, [items])
 
     useEffect(() => {
         const newItems = [];
@@ -28,7 +37,6 @@ function BomList({ partsList, partID, deletePart, clearList }) {
 
                     newTotalPrice.push(partID[id] * part.prices[0].cost);
                 }
-
             }
         }
         setItems(newItems);
@@ -36,13 +44,15 @@ function BomList({ partsList, partID, deletePart, clearList }) {
 
     }, [partID]);
 
+    function handleSaveList(e) {
+        const doc = new jsPDF();
+        doc.autoTable({ html: '#bomList' });
+        doc.save('table.pdf');
+    };
 
-
-    function handleSave(e) {
-        const doc = new jsPDF()
-        doc.autoTable({ html: '#bomList' })
-        doc.save('table.pdf')
-    }
+    function handleClearList(e){
+        clearList();
+    };
 
     return (
 
@@ -66,24 +76,25 @@ function BomList({ partsList, partID, deletePart, clearList }) {
                         </tbody>
                         <tfoot >
                             <tr>
-                            <td colSpan={5}><h4>Total fara TVA: {totalPrice} RON</h4></td>
+                                <td colSpan={5}><h4>Total fara TVA: {totalPrice} RON</h4></td>
                             </tr>
                             <tr>
-                            <td colSpan={5}><h4>TVA: {(totalPrice * 0.19).toFixed(2)} RON</h4></td>
+                                <td colSpan={5}><h4>TVA: {(totalPrice * 0.19).toFixed(2)} RON</h4></td>
                             </tr>
                             <tr>
-                            <td colSpan={5}><h3>Total: {(totalPrice * 1.19).toFixed(2)} RON</h3></td>
+                                <td colSpan={5}><h3>Total: {(totalPrice * 1.19).toFixed(2)} RON</h3></td>
                             </tr>
                         </tfoot>
                     </table> : <p className='text-align-center'>BOM list empty!</p>)}
-                {/* <div className='price-container'>
-                    <p>Total fara TVA: {totalPrice} RON</p>
-                    <p>TVA: {(totalPrice * 0.19).toFixed(2)} RON</p>
-                    <h4>Total: {(totalPrice * 1.19).toFixed(2)} RON</h4>
-                </div> */}
                 <div className='justify-space-around flex-container'>
-                    <button onClick={(e) => clearList()} className='submitButton'>Clear List</button>
-                    <button onClick={handleSave} className='submitButton'>Save List</button>
+                    <button onClick={handleClearList}
+                        className={ isDirty ? 'submitButton' : 'submit-button-inactive'}
+                        disabled={!isDirty}>Clear List
+                    </button>
+                    <button onClick={handleSaveList}
+                        className={ isDirty ? 'submitButton' : 'submit-button-inactive'}
+                        disabled={!isDirty}>Save List
+                    </button>
                 </div>
             </div>
         </section>
